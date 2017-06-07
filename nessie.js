@@ -78,12 +78,26 @@ function getBalance(accountId, element) {
 	xhttp.send();
 }
 
+function getNickname(accountId, element) {
+	element.innerHTML += " for Account ID " + accountId + "<br>"
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function() {
+	    if (this.readyState == 4 && this.status == 200) {
+	       element.innerHTML += JSON.parse(xhttp.responseText).nickname
+	    }
+	};
+	xhttp.open("GET", baseURL + "/accounts/" + accountId + KEY, true);
+	xhttp.send();
+}
+
 var p1 = document.getElementById("p1")
 var p2 = document.getElementById("p2")
 var p3 = document.getElementById("p3")
+var p4 = document.getElementById("p4")
 
 //getting the customer ids gets you the accounts, getting the accounts gets you the balance. In this order you must go.
 getCustomerIds(p1)
 getAccountIds("59380fd0a73e4942cdafd722", p2)
 getBalance("59380fd0a73e4942cdafd723", p3)
+getNickname("59380fd0a73e4942cdafd723", p4)
 
