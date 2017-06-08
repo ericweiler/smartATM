@@ -20,7 +20,7 @@ Benefits:
 -------
 In 2016, a study was conducted on nearly 100 NYC ATMs 
 
-Accessibility: allows for more flexible ATM design, without need to include so much keypad space, people can use more comfortable positions and don't have to hunch over at a small window
+Accessibility: allows for more flexible ATM design, without need to include so much keypad space, people can use more comfortable positions and don't have to hunch over at a small window, more accessible for people who find it difficult to type
 
 Easier access to transaction history on the go could encourage smarter spending
 
@@ -31,7 +31,7 @@ A lot of ATM infrastructure is quite antiquated, and key loggers are easy to ins
 
 Challenges: 
 ----------
-LeapMotion sensitivity varies a lot, some gestures easier to interpret than others
+LeapMotion sensitivity varies a lot, some gestures easier to interpret than others (appears that circle-exit can be triggered by doing another gesture and not keeping hand in one place)
 
 Could find better gesture software or trained more gestures with more time
 
