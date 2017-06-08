@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+<head>
+	<title>SmartATM</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!--CSS-->
+	<link rel="stylesheet" href="css/style.css">
+
+	<!--JavaScript-->
+	<script src="https://js.leapmotion.com/leap-0.6.4.min.js"></script>
+	<script src="javascript/script.js"></script>
+	<script src="javascript/pdollar.js"></script>
+
+	<!--Favicon-->
+	<link rel="icon" type="image/ico" href="images/favicon">
+</head>
+
+
+
+<body onload="checkLibrary()">
+<div id="wrapper">
+	<header><img id="intro-logo" src="images/logo-white.png"/> SmartATM</header>
+	<div class="splash">
+		
+		Please deposit bills into the slot below.
+	</div>
+
+	<footer>Make a thumbs up when all bills have been deposited.</footer>
+
+	<div id="main">
+	  <button id="pause" onclick="togglePause()">Pause</button>
+	  <input type="checkbox" id="pauseOnGesture" onclick="pauseForGestures()">Pause on gesture</input>
+	  <h3>Frame data:</h3>
+	  <div id="frameData"></div>	
+	  <div style="clear:both;"></div>
+	  <h3>Hand data:</h3>
+	  <div id="handData"></div>
+	  <div style="clear:both;"></div>
+	  <h3>Finger and tool data:</h3>
+	  <div id="pointableData"></div>
+	  <div style="clear:both;"></div>
+	  <h3>Gesture data:</h3>
+	  <div id="gestureData"></div>
+	</div>
+</div> <!--wrapper-->
+</body>
+</html>

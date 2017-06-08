@@ -4,8 +4,10 @@ var paused = false;
 var waitGesture = true;
 var frameCount = 0;
 var prevSelect = 0;
+var circleCount = 0;
 var selected = false;
-var selection = "59389eaeceb8abe24251788e";
+var swipe = false;
+var selection = "";
 // Setup Leap loop with frame callback function
 var controllerOptions = {enableGestures: true};
 
@@ -16,8 +18,8 @@ var inputArray = [0, 0, 0, 0, 0, 0, 0, 0, 0];
 var thumbsUp = 0;
 var thumbsDown = 0;
 var thumbConfirm = "";
-  var inputString = "";
-var urls = ["index.html", "welcome.html", "account.html"];
+var inputString = "";
+var urls = ["index.html", "welcome.html", "account.html", "withdraw.html", "Deposit.html", "transactions.html", "Success.html", "exit.html"];
 
 // to use HMD mode:
 // controllerOptions.optimizeHMD = true;
@@ -26,7 +28,7 @@ Leap.loop(controllerOptions, function(frame) {
 
 //get the current page
 var currentPage = getIndex(window.location.pathname.split("/").pop());
-
+selected = false;
 
   if (frameCount > 50)
   {
@@ -60,8 +62,8 @@ var currentPage = getIndex(window.location.pathname.split("/").pop());
   frameOutput.innerHTML = "<div style='width:300px; float:left; padding:5px'>" + frameString + "</div>";
 
 
-  var extendedOutput = document.getElementById("extended");
-  var extendedString = "";
+  // var extendedOutput = document.getElementById("extended");
+  // var extendedString = "";
   var extendedFingers = 0;
 
   // var inputOutput = document.getElementById("inputData");
@@ -102,8 +104,8 @@ var currentPage = getIndex(window.location.pathname.split("/").pop());
   if (currentPage != 0)
   {
     var inputNum = findMax();
-    var foo = document.getElementById("inputmax");
-    foo.innerHTML = inputNum;
+    // var foo = document.getElementById("inputmax");
+    // foo.innerHTML = inputNum;
    
    switch (inputNum)
     {
@@ -111,7 +113,7 @@ var currentPage = getIndex(window.location.pathname.split("/").pop());
       case 1:
         if (prevSelect != 1)
         {
-         reset();
+         reset(currentPage);
           var select = document.getElementById("select1");
           select.innerHTML = "<img class='options' src='images/RightHand-1-select.svg'/>";
         }
@@ -119,7 +121,7 @@ var currentPage = getIndex(window.location.pathname.split("/").pop());
       case 2:
         if (prevSelect != 2)
         {
-         reset();
+         reset(currentPage);
         var select = document.getElementById("select2");
         select.innerHTML = "<img class='options' src='images/RightHand-2-select.svg'/>";
         }
@@ -127,7 +129,7 @@ var currentPage = getIndex(window.location.pathname.split("/").pop());
       case 3:
         if (prevSelect != 3)
         {
-         reset();  
+         reset(currentPage);  
         var select = document.getElementById("select3");
         select.innerHTML = "<img class='options' src='images/RightHand-3-select.svg'/>";
        }
@@ -139,7 +141,7 @@ var currentPage = getIndex(window.location.pathname.split("/").pop());
 
       if (confirmThumbs() == 1)
       {
-        confirmSelection();
+        confirmSelection(currentPage);
       }
       else
       {
@@ -154,8 +156,8 @@ var currentPage = getIndex(window.location.pathname.split("/").pop());
     }
   }
 
- if (currentPage != 0)
-  //extendedOutput.innerHTML = extendedFingers;
+ // if (currentPage != 0)
+ //  extendedOutput.innerHTML = extendedFingers;
 
   if (frame.gestures.length > 0) {
     if (!waitGesture)
@@ -164,8 +166,12 @@ var currentPage = getIndex(window.location.pathname.split("/").pop());
       var gesture = frame.gestures[i];
       switch (gesture.type) {
         case "circle":
+          circleCount++;
+          if (circleCount > 30)
+            exit(currentPage);
           break;
         case "swipe":
+        swipe = true;
          navigate(currentPage);        
           break;
         case "screenTap":
@@ -184,16 +190,34 @@ var currentPage = getIndex(window.location.pathname.split("/").pop());
 
 function navigate(currentPage)
 {
-  if(currentPage==1){ window.location = "account.html"; }
-  if (selected == true && currentPage > 0
-    || currentPage == 0)
+  var newPageNum = 0;
+
+  if (swipe)
   {
-    window.location = urls[currentPage + 1];
+    if (currentPage > 0)
+      newPageNum = currentPage - 1;
+    else
+      newPageNum = currentPage + 1;
   }
   else
   {
-    window.location = urls[currentPage - 1];
+    if (confirmThumbs())
+    {
+      if (currentPage == 1)
+      {
+        newPageNum = 2;
+      }
+      else
+      {
+        newPageNum = currentPage + prevSelect;
+      }
+    }
   }
+  
+  //reset and navigate
+  reset(currentPage);
+
+  window.location = urls[newPageNum];
 }
 
 function confirmSelection(currentPage)
@@ -206,13 +230,12 @@ function confirmSelection(currentPage)
         selection = "593882e4ceb8abe242517839";
         break;
       case 2:
-        selection = "59389eaeceb8abe24251788e";
+        selection = "59388313ceb8abe24251783a";
         break;
       case 3:
         selection = "59380fd0a73e4942cdafd723";
         break;
     }
-    
     navigate(currentPage);
 
 }
@@ -227,8 +250,18 @@ function getIndex(url)
       return 1;
     case "account.html":
       return 2;
+    case "withdraw.html":
+      return 4;
+    case "Deposit.html":
+      return 5;
+    case "transactions.html":
+      return 6;
+    case "Success.html":
+      return 7;
+    case "exit.html":
+      return 8;
     default:
-      return -1;
+      return 0;
   }
 }
 
@@ -302,7 +335,7 @@ function pauseForGestures() {
   }
 }
 
-function reset()
+function reset(currentPage)
 {
     //reset counting array
     for (var i = 0; i < inputArray.length; i++)
@@ -312,26 +345,33 @@ function reset()
     //reset counting variables
     thumbsUp = 0;
     thumbsDown = 0;
+    circleCount = 0;
 
+    if (currentPage == 1 || currentPage == 2)
+    {
     var select1 = document.getElementById("select1");
     select1.innerHTML = "<img class='options' src='images/RightHand-1-tilt.svg'/>";
     var select2 = document.getElementById("select2");
     select2.innerHTML = "<img class='options' src='images/RightHand-2-tilt.svg'/>";
     var select3 = document.getElementById("select3");
     select3.innerHTML = "<img class='options' src='images/RightHand-3-tilt.svg'/>";
+    }
+}
+
+function exit(currentPage)
+{
+  reset(currentPage);
+  window.location = "exit.html";
 }
 
 function displaySelected(){
   var nick = document.getElementById("nick");
   getNickname(selection, nick);
-
-  var bal = document.getElementById("balance");
-  getBalance(selection, bal);
+  
 }
 
 var curPage = window.location.pathname.split("/").pop();
 
 if(curPage === "account.html" && selection != ""){
   displaySelected();
-
 }
