@@ -1,0 +1,186 @@
+@font-face{
+	font-family: Optimist;
+	src: url('../fonts/Optimist_W_Rg.ttf');
+}
+
+@font-face{
+	font-family: Optimist-Bd;
+	src: url('../fonts/Optimist_W_Bd.ttf');
+}
+
+@font-face{
+	font-family: Optimist-BdIt;
+	src: url('../fonts/Optimist_W_BdIt.ttf');
+}
+
+@font-face{
+	font-family: Optimist-Lt;
+	src: url('../fonts/Optimist_W_Lt.ttf');
+}
+
+@font-face{
+	font-family: Optimist-XLt;
+	src: url('../fonts/Optimist_W_XLt.ttf');
+}
+
+body{
+	font-family: Optimist;
+	color:white;
+	background-color:#004977;
+}
+
+#intro-logo-a{
+	width:200px;
+}
+#intro-logo{
+	vertical-align:-45%;
+	width:295px;
+	margin-right:10px;
+}
+
+#intro-logo-w{
+	width:295px;
+	margin-left:16px;
+	vertical-align: -48%;
+}
+
+header{
+	margin-top:65px;
+	font-family: Optimist-BdIt;
+	letter-spacing: 1px;
+	text-align: center;
+	font-size:2.75em;
+
+}
+
+.flex-container{
+	margin:0 auto;
+	text-align:center;
+	display:flex;
+	width:85%;
+	justify-content: space-between;
+	flex-direction:row;
+	margin-top:65px;
+}
+
+.flex-item{
+	width:22.5%;
+	font-family: Optimist-Lt;
+	border:2px solid white;
+	border-radius: 20px;
+	background-color: #003b60;
+	
+	margin:10px;
+}
+
+.flex-item p{
+	margin:10px;
+	padding:10px;
+}
+
+.flex-item-2{
+	width:30%;
+	font-family: Optimist-Lt;
+	border-radius: 20px;
+	background-color: #003b60;
+	margin:10px;
+	border:2px solid white;
+}
+
+.flex-item-2 p{
+	font-family: Optimist-BdIt;
+	letter-spacing: 1px;
+	font-size: 1.2em;
+	text-align: left;
+	margin-left:30px;
+}
+
+.demo-icon{
+	display:block;
+	margin:0 auto;
+}
+
+.flex-item div{
+	width:200px;
+	height:200px;
+	margin:0 auto;
+}
+
+#finger{
+	width:170px;
+}
+
+#finger img{
+	padding-top:12px;
+}
+
+#thumb{
+	width:170px;
+}
+
+#thumb img{
+	padding-top:22px;
+}
+
+#exit{
+	width:180px;
+}
+
+#exit img{
+	padding-top:15px;
+}
+
+footer{
+	font-family: Optimist-BdIt;
+	letter-spacing: 1px;
+	margin-top:65px;
+	text-align: center;
+}
+
+#check-amt, #save-amt, #cred-amt, #balance{
+	font-family:Optimist-XLt;
+	font-size:3em;
+	line-height: .1em;
+	margin-top:45px;
+	letter-spacing: -1px;
+}
+
+#balance{
+	font-size:7em;
+	padding:0;
+	text-align: left;
+	margin:60px 0px 60px 0px;
+}
+
+.flex-item-3{
+	margin:0 auto;
+}
+
+.options{
+	width:100px;
+}
+
+#select1 img, #select2 img, #select3 img{
+	display:block;
+	margin:-10px auto;
+}
+
+#nick{
+	font-family: Optimist-BdIt;
+	letter-spacing: 1px;
+	margin-top:65px;
+	text-align: center;
+	font-size:3em;
+}
+
+.splash{
+	font-family: Optimist-BdIt;
+	letter-spacing: 1px;
+	font-size:4.5em;
+	margin-top:250px;
+	text-align:center;
+}
+
+.splash p{
+	font-size:2em;
+}

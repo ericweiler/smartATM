@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+<head>
+	<title>SmartATM</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!--CSS-->
+	<link rel="stylesheet" href="css/style.css">
+
+	<!--JavaScript-->
+	<script src="https://js.leapmotion.com/leap-0.6.4.min.js"></script>
+	<script src="javascript/nessie.js"></script>
+	<script src="javascript/pdollar.js"></script>
+
+	<!--Favicon-->
+	<link rel="icon" type="image/ico" href="images/favicon">
+</head>
+
+
+
+<body onload="checkLibrary()">
+<div id="wrapper">
+	<div class="flex-container">
+		<div class="flex-item-3">
+			<p id="nick"></p>
+			<br/>
+			<p id="balance"></p>
+		</div>
+	</div>
+
+	<div class="flex-container">
+		<div class="flex-item-2 checking"><p id="check"></p><p id="check-amt">Withdraw</p><hr/><p id="select1"><img class="options" src="images/RightHand-1-tilt.svg"/></p></div>
+		<div class="flex-item-2 savings"><p id="save"></p><p id="save-amt">Deposit</p><hr/><p id="select2"><img class="options" src="images/RightHand-2-tilt.svg"/></p></div>
+		<div class="flex-item-2 credit"><p id="cred"></p><p id="cred-amt">Transactions</p><hr/><p id="select3"><img class="options" src="images/RightHand-3-tilt.svg"/></p></div>
+	</div>
+
+	<header><img id="intro-logo-a" src="images/logo-white.png"/></header>
+
+
+	<div id="main">
+	  <button id="pause" onclick="togglePause()">Pause</button>
+	  <input type="checkbox" id="pauseOnGesture" onclick="pauseForGestures()">Pause on gesture</input>
+	  <h3>Frame data:</h3>
+	  <div id="frameData"></div>	
+	  <div style="clear:both;"></div>
+	  <h3>Hand data:</h3>
+	  <div id="handData"></div>
+	  <div style="clear:both;"></div>
+	  <h3>Finger and tool data:</h3>
+	  <div id="pointableData"></div>
+	  <div style="clear:both;"></div>
+	  <h3>Gesture data:</h3>
+	  <div id="gestureData"></div>
+	</div>
+</div> <!--wrapper-->
+</body>
+<script src="javascript/script.js"></script>
+</html>
