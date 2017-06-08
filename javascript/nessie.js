@@ -156,11 +156,11 @@ function getPurchases(accountId, tableElement) {
 	description = xhttp.responseText.substring(position + 15, endposition - 1)
 
 	   
-	tableElement.innerHTML += "<tr><td>" + purchaseDate + "</td><td>" + 
+	tableElement.innerHTML += "<tr><td>" + purchaseDate + "</td><td class='desc'>" + 
 	   
 	description + "</td><td>" + 
 	   
-	amount + "</td></tr>"
+	"$" + amount + "</td></tr>"
 	   
 	i = endposition
 	   
@@ -169,4 +169,20 @@ function getPurchases(accountId, tableElement) {
 	};
 	xhttp.open("GET", "http://api.reimaginebanking.com/merchants/57cf75cea73e494d8675ec49/accounts/59380fd0a73e4942cdafd723/purchases?key=0b61666358ee3724381e2cde8c944de0", true);
 	xhttp.send();
+}
+
+
+function deposit(accountId, amount){
+	var xhttp = new XMLHttpRequest();
+	xhttp.open("POST", baseURL + "/accounts/" + accountId + "/deposits" + KEY, true);
+	xhttp.setRequestHeader("Content-type", "application/json");
+	xhttp.send("{\"medium\": \"balance\",\"amount\": " + amount + "}");
+}
+
+
+function withdrawal(accountId, amount){
+	var xhttp = new XMLHttpRequest();
+	xhttp.open("POST", baseURL + "/accounts/" + accountId + "/withdrawals" + KEY, true);
+	xhttp.setRequestHeader("Content-type", "application/json");
+	xhttp.send("{\"medium\": \"balance\",\"amount\": " + amount + "}");
 }

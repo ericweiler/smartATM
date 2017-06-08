@@ -4,6 +4,11 @@
 }
 
 @font-face{
+	font-family: Optimist-It;
+	src: url('../fonts/Optimist_W_It.ttf');
+}
+
+@font-face{
 	font-family: Optimist-Bd;
 	src: url('../fonts/Optimist_W_Bd.ttf');
 }
@@ -31,7 +36,9 @@ body{
 
 #intro-logo-a{
 	width:200px;
+	margin:0;
 }
+
 #intro-logo{
 	vertical-align:-45%;
 	width:295px;
@@ -149,7 +156,7 @@ footer{
 	font-size:7em;
 	padding:0;
 	text-align: left;
-	margin:60px 0px 60px 0px;
+	margin:30px 0px 30px 0px;
 }
 
 .flex-item-3{
@@ -165,22 +172,142 @@ footer{
 	margin:-10px auto;
 }
 
-#nick{
+#nick, #transtitle{
 	font-family: Optimist-BdIt;
 	letter-spacing: 1px;
-	margin-top:65px;
+	margin-top:20px;
 	text-align: center;
 	font-size:3em;
+}
+
+#transtitle{
+	line-height: 1px;
+	margin-bottom:90px;
 }
 
 .splash{
 	font-family: Optimist-BdIt;
 	letter-spacing: 1px;
 	font-size:4.5em;
-	margin-top:250px;
+	margin-top:100px;
 	text-align:center;
 }
 
 .splash p{
 	font-size:2em;
+}
+
+#rembalance{
+	font-family: Optimist-XLt;
+	letter-spacing: -4px;
+	margin-top:30px;
+}
+
+.flex-item-4{
+	width:200px;
+	height:260px;
+	border:1px solid white;
+	background-color:white;
+	border-radius:20px;
+}
+
+.with{
+	width:650px;
+	margin-top:30px;
+}
+
+#w0, #w1, #w2{
+	color:#d03027;
+	font-family: Optimist-XLt;
+	font-size:12em;
+	margin:0 auto;
+}
+
+#dollar{
+	position: absolute;
+	left:-140px;
+	font-family: Optimist-XLt;
+	font-size:12em;
+	margin:0;
+}
+
+.divdollar{
+	position:relative;
+}
+
+#succ{
+	width:200px;
+	display:block;
+	margin:30px auto;
+}
+
+#subtext{
+	font-size:.5em;
+	margin-bottom:-10px;
+}
+
+#back{
+	width:250px;
+	margin-top:50px;
+	margin-left:50px;
+	margin-bottom:0px;
+}
+
+#back img, #back-icon{
+	width:100px;
+	vertical-align: center;
+}
+
+#acct{
+	margin-top:10px;
+}
+
+th{
+	color:#d03027;
+	background-color:white;
+	height:60px;
+	text-align:left;
+	padding:10px 30px;
+	font-size:24px;
+	font-family:Optimist-Bd;
+}
+
+table, th, td{
+	border:1px solid white;
+	vertical-align: center;
+}
+
+td{
+	height:30px;
+	padding:10px 30px;
+	font-family:Optimist-It;
+	font-size:16px;
+}
+
+table{
+	border-collapse: collapse;
+	border:2px solid white;
+	width:85%;
+	margin:0 auto;
+}
+
+.desc{
+	font-family:Optimist-BdIt;
+	text-transform: uppercase;
+}
+
+#exitp{
+	font-size:50px;
+	margin-bottom:20px;
+	margin-top:250px;
+}
+
+h2{
+	margin-top:220px;
+	font-size:1em;
+}
+
+#main{
+	font-size:9px;
+	margin-left:60px;
 }
